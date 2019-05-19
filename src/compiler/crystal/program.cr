@@ -186,6 +186,10 @@ module Crystal
       static_array.declare_instance_var("@buffer", static_array.type_parameter("T"))
       static_array.can_be_stored = false
 
+      types["Vector"] = vector = @vector = VectorType.new self, self, "Vector", value, ["T", "N"]
+      vector.struct = true
+      vector.can_be_stored = false
+
       types["String"] = string = @string = NonGenericClassType.new self, self, "String", reference
       string.declare_instance_var("@bytesize", int32)
       string.declare_instance_var("@length", int32)
@@ -486,7 +490,7 @@ module Crystal
 
     {% for name in %w(object no_return value number reference void nil bool char int int8 int16 int32 int64 int128
                      uint8 uint16 uint32 uint64 uint128 float float32 float64 string symbol pointer enumerable indexable
-                     array static_array exception tuple named_tuple proc union enum range regex crystal
+                     array static_array vector exception tuple named_tuple proc union enum range regex crystal
                      packed_annotation thread_local_annotation no_inline_annotation
                      always_inline_annotation naked_annotation returns_twice_annotation
                      raises_annotation primitive_annotation call_convention_annotation

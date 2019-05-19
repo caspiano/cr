@@ -72,6 +72,7 @@ require "set"
 {% end %}
 require "slice"
 require "static_array"
+require "vector"
 require "struct"
 require "symbol"
 require "system"
