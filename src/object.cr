@@ -71,7 +71,7 @@ class Object
   #   hasher
   # end
   # ```
-  abstract def hash(hasher)
+  ##abstract def hash(hasher) TODO: uncomment
 
   # Generates an `UInt64` hash value for this object.
   #
